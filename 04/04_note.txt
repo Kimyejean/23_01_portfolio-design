@@ -1,0 +1,90 @@
+1번 실습 문제 aspx.cs파일
+
+namespace WebApplication1
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e){
+
+        }
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e){  }
+        protected void CheckBox2_CheckedChanged(object sender, EventArgs e){  }
+        protected void CheckBox3_CheckedChanged(object sender, EventArgs e){  } //쳌박은 굳이 쓸 필요 없음
+
+        protected void Button1_Click(object sender, EventArgs e){
+            Label1.Text = "오늘 먹을 저녁 메뉴는 ";
+
+            if (CheckBox1.Checked == true) //체크박스가 체크 되었다면
+                Label1.Text += CheckBox1.Text + " "; //글자를 누적시킴=>여러 옵션을 선택해도 이어지게 만듦
+
+            if (CheckBox2.Checked == true)
+                Label1.Text += CheckBox2.Text + " ";
+
+            if (CheckBox3.Checked == true)
+                Label1.Text += CheckBox3.Text + " ";
+        }
+    }
+}
+
+
+2번 실습 문제
+
+ protected void CheckBox4_CheckedChanged(object sender, EventArgs e){
+       if (CheckBox4.Checked == true)
+       Label2.Text = "메일에 가입 되었습니다.";
+       else
+            Label2.Text = " "; 
+            //체크박스는 자동으로 새로고침이 안 되기 때문에 결과가 안 나온다.. 체크박스 속성에 autopostback을 true로 만들어 줘야 자동으로 나왔다 사라졌다 한다.
+ }
+
+
+3번 실습 문제
+ protected void Button2_Click(object sender, EventArgs e)  {
+      Label3.Text = "내가 가고싶은 여행지는 ";
+      for (int i = 0; i < CheckBoxList1.Items.Count; i++){
+          if (CheckBoxList1.Items[i].Selected)
+              Label3.Text += CheckBoxList1.Items[i].Text + "입니당~";
+         }
+ }
+
+
+4번 실습 문제
+ protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RadioButtonList1.Items[0].Selected)
+                Label1.Text = "소고기 미역국 명당 : 400kcal";
+            if (RadioButtonList1.Items[1].Selected)
+                Label1.Text = "계란찜 명당 : 401kcal";
+            if (RadioButtonList1.Items[2].Selected)
+                Label1.Text = "두부구이 명당 : 402kcal";
+            if (RadioButtonList1.Items[3].Selected)
+                Label1.Text = "고등어구이 명당 : 403kcal";
+            if (RadioButtonList1.Items[4].Selected)
+                Label1.Text = "미역줄기볶음 명당 : 404kcal";
+ }
+
+
+
+5번 실습 문제
+
+protected void Button1_Click(object sender, EventArgs e)
+        {
+            Label2.Text = "신상 프로필<br>";
+            Label2.Text += "이름 : " + TextBox1.Text + "<br>";
+            Label2.Text += "취미 : ";
+            for (int i = 0; i < CheckBoxList1.Items.Count; i++) {
+                if (CheckBoxList1.Items[i].Selected)
+                    Label2.Text += CheckBoxList1.Items[i].Text + "입니당~<br>";
+            }
+            Label2.Text += "성별 : ";
+            if (RadioButton1.Checked)
+                Label2.Text += "남자";
+            if (RadioButton2.Checked)
+                Label2.Text += "여자";
+
+ }
+
+ protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("WebForm2.aspx");
+        }
